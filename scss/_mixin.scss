@@ -1,0 +1,52 @@
+@mixin triangle($direction, $size, $color) {
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: math.div($size, 2);
+
+  @if $direction == "up" or $direction == "u" {
+    border-bottom-color: $color;
+  } @else if $direction == "down" or $direction == "d" {
+    border-top-color: $color;
+  } @else if $direction == "right" or $direction == "r" {
+    border-left-color: $color;
+  } @else if $direction == "left" or $direction == "l" {
+    border-right-color: $color;
+  }
+}
+
+@mixin position($xValue, $yValue) {
+  position: absolute;
+  left: $xValue;
+  top: $yValue;
+
+  @if $xValue == 50% and $yValue == 50% {
+    transform: translate(-50%, -50%);
+  } @else if $yValue == 50% {
+    transform: translateY(-50%);
+  } @else if $xValue == 50% {
+    transform: translateX(-50%);
+  }
+}
+
+@mixin a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+@mixin background($fileName, $coordinate) {
+  background: url(#{$imageUrl}#{$fileName}) no-repeat $coordinate;
+}
+
+@mixin text($color, $fontSize, $fontWeight, $lineHeight, $letterSpacing) {
+  color: $color;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}

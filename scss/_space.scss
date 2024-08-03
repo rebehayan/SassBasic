@@ -1,0 +1,7 @@
+$mt: 20, 30;
+
+@each $item in $mt {
+  .mt#{$item} {
+    margin-top: rem($item);
+  }
+}
